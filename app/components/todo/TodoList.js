@@ -4,7 +4,7 @@ import { FlatList, StyleSheet } from 'react-native';
 import TodoItem from './TodoItem';
 import TodoItemSeparator from './TodoItemSeparator';
 
-function TodoList({ data, style, onCheck, onDelete }) {
+function TodoList({ data, style, onCheck, onDelete, onNavigate }) {
 	return (
 		<FlatList
 			data={data}
@@ -17,6 +17,7 @@ function TodoList({ data, style, onCheck, onDelete }) {
 					isCompleted={item.completed}
 					onCheck={() => onCheck(item)}
 					onDelete={() => onDelete(item)}
+					onNavigate={() => onNavigate(item)}
 				/>
 			)}
 		/>

@@ -4,11 +4,11 @@ import { useFormikContext } from 'formik';
 
 import TextButton from './../TextButton';
 
-function FormSubmitButton({ title }) {
+function FormSubmitButton({ title, disabled }) {
 	const { handleSubmit } = useFormikContext();
 
 	return (
-		<TextButton title={title} style={styles.button} onPress={handleSubmit} />
+		<TextButton title={title} style={styles.button} onPress={handleSubmit} disabled={disabled} />
 	);
 }
 

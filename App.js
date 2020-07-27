@@ -18,29 +18,38 @@ export default function App() {
 		init();
 	}, []);
 
+	const updateStorage = async (updatedTodos) => {
+		setTodos(updatedTodos);
+		await SecureStore.setItemAsync('todos', JSON.stringify(updatedTodos));
+	};
+
 	const handleCheck = async (item) => {
 		const updatedTodos = todos.map((todo) =>
 			todo.id === item.id ? { ...todo, completed: !item.completed } : todo
 		);
-		setTodos(updatedTodos);
-		await SecureStore.setItemAsync('todos', JSON.stringify(updatedTodos));
+		await updateStorage(updatedTodos);
 	};
 
 	const handleDelete = async (item) => {
 		const updatedTodos = todos.filter((todo) => todo.id !== item.id);
-		setTodos(updatedTodos);
-		await SecureStore.setItemAsync('todos', JSON.stringify(updatedTodos));
+		await updateStorage(updatedTodos);
 	};
 
 	const handleCreate = async (item) => {
 		const updatedTodos = [...todos, item];
-		setTodos(updatedTodos);
-		await SecureStore.setItemAsync('todos', JSON.stringify(updatedTodos));
+		await updateStorage(updatedTodos);
+	};
+
+	const handleUpdate = async (item) => {
+		const updatedTodos = todos.map((todo) =>
+			todo.id === item.id ? { ...todo, ...item } : todo
+		);
+		await updateStorage(updatedTodos);
 	};
 
 	return (
 		<TodoContext.Provider
-			value={{ todos, handleCheck, handleDelete, handleCreate }}
+			value={{ todos, handleCheck, handleDelete, handleCreate, handleUpdate }}
 		>
 			<NavigationContainer theme={navigationTheme}>
 				<AppNavigator />

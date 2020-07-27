@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import defaultStyles from './../../configs/styles';
 
-function TodoContent({ title, date, isCompleted = false }) {
+function TodoContent({ title, isCompleted = false }) {
 	return (
 		<View style={styles.content}>
 			<Text

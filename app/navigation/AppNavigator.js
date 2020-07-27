@@ -2,10 +2,10 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import ActiveScreen from './../screens/ActiveScreen';
-import AllScreen from './../screens/AllScreen';
-import CompleteScreen from './../screens/CompleteScreen';
 import CreateScreen from './../screens/CreateScreen';
+import AllToEditNavigator from './AllToEditNavigator';
+import CompleteToEditNavigator from './CompleteToEditNavigator';
+import ActiveToEditNavigator from './ActiveToEditNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -13,7 +13,7 @@ const AppNavigator = () => (
 	<Tab.Navigator>
 		<Tab.Screen
 			name='All'
-			component={AllScreen}
+			component={AllToEditNavigator}
 			options={{
 				tabBarIcon: ({ size, color }) => (
 					<MaterialCommunityIcons
@@ -26,7 +26,7 @@ const AppNavigator = () => (
 		/>
 		<Tab.Screen
 			name='Completed'
-			component={CompleteScreen}
+			component={CompleteToEditNavigator}
 			options={{
 				tabBarIcon: ({ size, color }) => (
 					<MaterialCommunityIcons
@@ -39,7 +39,7 @@ const AppNavigator = () => (
 		/>
 		<Tab.Screen
 			name='Active'
-			component={ActiveScreen}
+			component={ActiveToEditNavigator}
 			options={{
 				tabBarIcon: ({ size, color }) => (
 					<MaterialCommunityIcons

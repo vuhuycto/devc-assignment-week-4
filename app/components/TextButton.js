@@ -10,6 +10,7 @@ function TextButton({
 	backgroundColor = 'primary',
 	color = 'white',
 	onPress,
+	disabled = false
 }) {
 	return (
 		<TouchableOpacity
@@ -18,6 +19,7 @@ function TextButton({
 				{ backgroundColor: defaultStyles.colors[backgroundColor] },
 			]}
 			onPress={onPress}
+			disabled={disabled}
 		>
 			<Text style={{ color: defaultStyles.colors[color] }}>{title}</Text>
 		</TouchableOpacity>
@@ -51,6 +53,7 @@ TextButton.propTypes = {
 		'dark',
 	]),
 	style: PropTypes.object,
+	disabled: PropTypes.bool,
 	onPress: PropTypes.func,
 };
 

@@ -12,6 +12,7 @@ function IconButton({
 	color = 'white',
 	size = 17,
 	onPress,
+	disabled
 }) {
 	return (
 		<TouchableOpacity
@@ -20,6 +21,7 @@ function IconButton({
 				{ backgroundColor: defaultStyles.colors[backgroundColor] },
 			]}
 			onPress={onPress}
+			disabled={disabled}
 		>
 			<MaterialCommunityIcons
 				name={name}
@@ -58,6 +60,7 @@ IconButton.propTypes = {
 	]),
 	style: PropTypes.object,
 	size: PropTypes.number,
+	disabled: PropTypes.bool,
 	onPress: PropTypes.func,
 };
 

@@ -7,8 +7,15 @@ import defaultStyles from './../../configs/styles';
 import IconButton from './../IconButton';
 import CallToAction from './../CallToAction';
 import TodoContent from './TodoContent';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-function TodoItem({ title, isCompleted = false, onCheck, onDelete }) {
+function TodoItem({
+	title,
+	isCompleted = false,
+	onCheck,
+	onDelete,
+	onNavigate,
+}) {
 	return (
 		<View style={styles.container}>
 			<View style={styles.todo}>
@@ -42,7 +49,9 @@ function TodoItem({ title, isCompleted = false, onCheck, onDelete }) {
 								onPress={onCheck}
 							/>
 						</CallToAction>
-						<TodoContent title={title} isCompleted={isCompleted} />
+						<TouchableWithoutFeedback onPress={onNavigate}>
+							<TodoContent title={title} isCompleted={isCompleted} />
+						</TouchableWithoutFeedback>
 					</View>
 				</SwipeRow>
 			</View>
